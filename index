@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bottega del Web — Siti per trattorie, B&B e pub</title>
+<meta name="description" content="Creiamo siti web per l'ospitalità toscana: trattorie, B&B, pub ed enoteche. Scegli la tua attività e guarda il sito trasformarsi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=Playfair+Display:ital,wght@0,500..800;1,500&family=Caveat:wght@600&family=Cormorant+Garamond:ital,wght@0,300..600;1,300..500&family=Anton&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#173B2C; --verde-scuro:#0E2A1F;
+  --paglia:#F3EBD8; --paglia-chiara:#FAF6EB;
+  --chianti:#A02C2C; --oro:#C99A3C; --inchiostro:#1C1A16;
+  --display:'Bricolage Grotesque',sans-serif;
+  --body:'Instrument Sans',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paglia);color:var(--inchiostro);line-height:1.6;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--oro);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* ========== BOTTEGA (default) ========== */
+nav{position:sticky;top:0;z-index:50;background:var(--paglia);border-bottom:2px solid var(--inchiostro);display:flex;justify-content:space-between;align-items:center;padding:.85rem 5vw}
+.logo{font-family:var(--display);font-weight:800;font-size:1.25rem;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--chianti)}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{text-decoration:none;font-weight:600;font-size:.95rem}
+.nav-links a:hover{color:var(--chianti)}
+.nav-cta{background:var(--verde);color:var(--paglia)!important;padding:.5rem 1.1rem;border-radius:999px}
+.nav-cta:hover{background:var(--chianti)}
+@media(max-width:720px){.nav-links li:not(:last-child){display:none}}
+
+.hero{padding:5rem 5vw 4rem;text-align:center}
+.eyebrow{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;border:2px solid var(--inchiostro);border-radius:999px;padding:.35rem 1rem;margin-bottom:1.75rem;background:var(--paglia-chiara)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6.5vw,4.4rem);line-height:1.04;letter-spacing:-.03em;max-width:20ch;margin:0 auto 1.25rem}
+h1 em{color:var(--chianti);font-style:normal}
+.hero p{max-width:52ch;margin:0 auto 2.2rem;font-size:1.15rem;color:#3d3a33}
+.btn{font-family:var(--body);font-weight:700;font-size:1rem;text-decoration:none;padding:.9rem 1.8rem;border-radius:999px;border:2px solid var(--inchiostro);transition:transform .15s ease,box-shadow .15s ease;display:inline-block;cursor:pointer;background:transparent}
+.btn:hover{transform:translateY(-2px);box-shadow:0 4px 0 var(--inchiostro)}
+.btn-pieno{background:var(--verde);color:var(--paglia);border-color:var(--verde)}
+.btn-pieno:hover{box-shadow:0 4px 0 var(--verde-scuro)}
+
+.sezione{padding:4.5rem 5vw}
+.sezione-testa{max-width:900px;margin:0 auto 3rem;text-align:center}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.02em;margin-bottom:.75rem}
+.sezione-testa p{color:#54503f;max-width:56ch;margin:0 auto}
+
+/* --- selettore trasformazione --- */
+.selettore{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.scelta{border:2px solid var(--inchiostro);border-radius:20px;background:var(--paglia-chiara);padding:2.2rem 1.8rem;text-align:center;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease;font-family:var(--body)}
+.scelta:hover{transform:translateY(-6px);box-shadow:0 8px 0 var(--inchiostro)}
+.scelta .emoji{font-size:3rem;display:block;margin-bottom:1rem}
+.scelta h3{font-family:var(--display);font-weight:800;font-size:1.4rem;margin-bottom:.4rem}
+.scelta p{font-size:.95rem;color:#54503f}
+.scelta .vai{display:inline-block;margin-top:1.1rem;font-weight:700;color:var(--chianti);font-size:.9rem}
+
+.scuro{background:var(--verde);color:var(--paglia)}
+.scuro h2{color:var(--paglia)}
+.scuro .sezione-testa p{color:#cfe0d5}
+.passi{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.passo{border:2px solid rgba(243,235,216,.35);border-radius:18px;padding:1.75rem}
+.passo-num{font-family:var(--display);font-weight:800;font-size:2.4rem;color:var(--oro);line-height:1}
+.passo h3{font-family:var(--display);font-weight:700;font-size:1.2rem;margin:.8rem 0 .5rem}
+.passo p{font-size:.95rem;color:#cfe0d5}
+
+.menu-casa{max-width:820px;margin:0 auto;background:var(--paglia-chiara);border:2px solid var(--inchiostro);border-radius:22px;padding:clamp(1.5rem,4vw,3rem)}
+.menu-casa::before{content:'☙ MENÙ DELLA CASA ❧';display:block;text-align:center;font-family:var(--display);font-weight:800;letter-spacing:.2em;font-size:.85rem;color:var(--chianti);margin-bottom:2rem}
+.voce{display:flex;align-items:baseline;gap:.6rem;padding:1.4rem 0;border-bottom:2px dotted #b8ae94;flex-wrap:wrap}
+.voce:last-child{border-bottom:none}
+.voce-nome{font-family:var(--display);font-weight:700;font-size:1.25rem;white-space:nowrap}
+.voce-punti{flex:1;border-bottom:2px dotted #b8ae94;transform:translateY(-4px);min-width:40px}
+.voce-prezzo{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--chianti);white-space:nowrap}
+.voce-desc{width:100%;font-size:.95rem;color:#54503f;margin-top:.35rem}
+.consigliato .voce-nome::after{content:'consigliato dallo chef';font-family:var(--body);font-weight:700;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;background:var(--oro);color:var(--inchiostro);border-radius:999px;padding:.25rem .6rem;margin-left:.7rem;vertical-align:middle}
+.menu-nota{text-align:center;margin-top:2rem;font-size:.9rem;color:#6b6659;font-style:italic}
+
+.chi{max-width:760px;margin:0 auto;text-align:center}
+.chi p{font-size:1.1rem;color:#cfe0d5;margin-bottom:1rem}
+.contatti{text-align:center}
+.contatti .btn-pieno{font-size:1.1rem;padding:1.1rem 2.4rem}
+.contatti-nota{margin-top:1.2rem;font-size:.95rem;color:#6b6659}
+footer{background:var(--verde-scuro);color:#9db8aa;text-align:center;padding:2.5rem 5vw;font-size:.9rem}
+footer .logo{color:var(--paglia);display:inline-block;margin-bottom:.6rem}
+
+/* ========== MODALITÀ DEMO ========== */
+.demo{display:none}
+body.in-demo #bottega{display:none}
+body.in-demo .demo.attiva{display:block;animation:appare .45s ease}
+@keyframes appare{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.barra-demo{position:sticky;top:0;z-index:60;display:none;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 5vw;background:var(--inchiostro);color:#fff;flex-wrap:wrap}
+body.in-demo .barra-demo{display:flex}
+.barra-demo .info{font-size:.9rem}
+.barra-demo strong{color:var(--oro)}
+.barra-demo .azioni{display:flex;gap:.7rem;flex-wrap:wrap}
+.barra-btn{font-weight:700;font-size:.85rem;text-decoration:none;padding:.5rem 1.1rem;border-radius:999px;border:2px solid #fff;color:#fff;background:transparent;cursor:pointer;font-family:var(--body)}
+.barra-btn.pieno{background:var(--oro);border-color:var(--oro);color:var(--inchiostro)}
+.barra-btn:hover{transform:translateY(-1px)}
+
+/* --- struttura comune demo --- */
+.d-hero{padding:5.5rem 5vw;text-align:center}
+.d-hero h1{max-width:16ch}
+.d-hero p.sotto{font-size:1.15rem;max-width:50ch;margin:0 auto 2rem}
+.d-sezione{padding:4rem 5vw}
+.d-titolo{text-align:center;margin-bottom:2.5rem}
+.d-lista{max-width:720px;margin:0 auto}
+.d-riga{display:flex;align-items:baseline;gap:.6rem;padding:1.1rem 0;flex-wrap:wrap}
+.d-nome{font-weight:700;font-size:1.1rem}
+.d-punti{flex:1;transform:translateY(-4px);min-width:30px}
+.d-prezzo{font-weight:800;font-size:1.1rem;white-space:nowrap}
+.d-desc{width:100%;font-size:.92rem;margin-top:.2rem;opacity:.75}
+.d-griglia{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.d-card{border-radius:18px;padding:1.8rem}
+.d-card h3{font-size:1.25rem;margin-bottom:.5rem}
+.d-piede{text-align:center;padding:3rem 5vw;font-size:.9rem}
+
+/* --- TRATTORIA: carta paglia, tovaglia a quadretti, note a mano --- */
+.demo-trattoria{--dt-fondo:#FBF3E1;--dt-rosso:#9E2B25;--dt-scuro:#33231A;--dt-oliva:#6B7043;
+  font-family:'Playfair Display',serif;background:var(--dt-fondo);color:var(--dt-scuro);
+  background-image:radial-gradient(#e8dcc0 1px,transparent 1px);background-size:26px 26px}
+.demo-trattoria::before{content:'';display:block;height:22px;position:sticky;top:0;z-index:5;
+  background:repeating-linear-gradient(45deg,var(--dt-rosso) 0 14px,#fff 14px 28px,var(--dt-rosso) 28px 42px,#F3C9C2 42px 56px)}
+.demo-trattoria h1,.demo-trattoria h2{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:0}
+.demo-trattoria .d-hero{background:transparent;color:var(--dt-scuro);padding-top:4rem}
+.demo-trattoria .d-hero h1{font-size:clamp(3rem,8vw,5.5rem);font-style:italic}
+.demo-trattoria .d-hero .filetto{display:inline-block;border-top:2px solid var(--dt-rosso);border-bottom:2px solid var(--dt-rosso);padding:.4rem 1.2rem;letter-spacing:.25em;font-size:.8rem;text-transform:uppercase;margin-bottom:1.5rem;font-family:var(--body);color:var(--dt-rosso)}
+.demo-trattoria .d-hero p.sotto{font-style:italic;font-size:1.25rem}
+.demo-trattoria .d-riga{border:none;position:relative}
+.demo-trattoria .d-nome{font-size:1.3rem}
+.demo-trattoria .d-punti{border-bottom:2px dotted #b8a37e}
+.demo-trattoria .d-prezzo{color:var(--dt-rosso);font-size:1.3rem}
+.demo-trattoria .d-desc{font-family:var(--body);font-style:normal}
+.demo-trattoria .nota-mano{font-family:'Caveat',cursive;font-size:1.25rem;color:var(--dt-oliva);transform:rotate(-2deg);display:inline-block;margin-left:.6rem}
+.demo-trattoria .d-lista{background:#fff;border:1px solid #e0d3b4;border-radius:6px;padding:2rem clamp(1.2rem,4vw,2.5rem);box-shadow:0 10px 30px rgba(51,35,26,.08)}
+.demo-trattoria .d-card{background:#fff;border:1px solid #e0d3b4;border-radius:6px;box-shadow:0 6px 20px rgba(51,35,26,.06)}
+.demo-trattoria .d-card h3{font-style:italic;color:var(--dt-rosso)}
+.demo-trattoria .btn-demo{background:var(--dt-rosso);color:#FBF3E1;border:none;font-family:var(--body);font-weight:700;padding:.95rem 2.1rem;border-radius:4px;font-size:1rem;text-decoration:none;display:inline-block;box-shadow:3px 3px 0 var(--dt-scuro)}
+.demo-trattoria .d-piede{background:var(--dt-scuro);color:#cbb9a4;font-family:var(--body)}
+
+/* --- B&B: serif sottile, archi, lino e salvia --- */
+.demo-bnb{--db-fondo:#F7F5EF;--db-verde:#5C6B52;--db-terra:#B08968;--db-scuro:#2E3328;
+  font-family:'Cormorant Garamond',serif;background:var(--db-fondo);color:var(--db-scuro);font-size:1.15rem}
+.demo-bnb h1,.demo-bnb h2{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:.02em}
+.demo-bnb .d-hero h1{font-size:clamp(3.2rem,9vw,6rem);font-style:italic}
+.demo-bnb .d-hero{background:transparent;padding-top:6rem;position:relative}
+.demo-bnb .d-hero::after{content:'';display:block;width:1px;height:70px;background:var(--db-verde);margin:2.5rem auto 0}
+.demo-bnb .d-hero .filetto{letter-spacing:.45em;font-size:.7rem;text-transform:uppercase;color:var(--db-verde);font-weight:700;display:block;margin-bottom:1.4rem;font-family:var(--body)}
+.demo-bnb .d-hero p.sotto{font-size:1.35rem;font-weight:400}
+.demo-bnb .d-titolo h2{font-style:italic;font-size:clamp(2.2rem,5vw,3.2rem)}
+.demo-bnb .d-titolo p{font-family:var(--body);font-size:.85rem;letter-spacing:.2em;text-transform:uppercase}
+.demo-bnb .d-card{background:#fff;border:1px solid #E3DFD2;border-radius:150px 150px 18px 18px;padding:3.5rem 1.8rem 2rem;text-align:center;box-shadow:none;transition:border-color .2s}
+.demo-bnb .d-card:hover{border-color:var(--db-verde)}
+.demo-bnb .d-card h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-style:italic;font-size:1.6rem;margin-bottom:.6rem}
+.demo-bnb .d-card p{font-family:var(--body);font-size:.95rem;color:#5a5f50}
+.demo-bnb .d-card .prezzo-camera{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;color:var(--db-terra);margin-top:1rem}
+.demo-bnb .btn-demo{background:transparent;color:var(--db-scuro);border:1px solid var(--db-scuro);font-family:var(--body);font-weight:600;letter-spacing:.15em;text-transform:uppercase;font-size:.8rem;padding:1rem 2.4rem;border-radius:0;text-decoration:none;display:inline-block;transition:background .2s,color .2s}
+.demo-bnb .btn-demo:hover{background:var(--db-scuro);color:var(--db-fondo)}
+.demo-bnb .d-piede{background:var(--db-scuro);color:#b9c0ad;font-family:var(--body);font-size:.85rem;letter-spacing:.1em}
+
+/* --- PUB: lavagna, neon ambra, condensed --- */
+.demo-pub{--dp-fondo:#14100C;--dp-ambra:#FFB03A;--dp-carta:#1E1812;--dp-testo:#EFE4D3;
+  font-family:var(--body);background:var(--dp-fondo);color:var(--dp-testo);
+  background-image:linear-gradient(rgba(255,176,58,.03) 1px,transparent 1px);background-size:100% 4px}
+.demo-pub h1,.demo-pub h2{font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;letter-spacing:.06em}
+.demo-pub .d-hero{background:radial-gradient(ellipse at 50% 0%,#2E241A 0%,var(--dp-fondo) 65%);padding-top:6rem}
+.demo-pub .d-hero h1{font-size:clamp(3.2rem,10vw,6.5rem);color:var(--dp-ambra);
+  text-shadow:0 0 12px rgba(255,176,58,.8),0 0 40px rgba(255,176,58,.45),0 0 90px rgba(255,176,58,.25);
+  animation:neon 3.5s ease-in-out infinite}
+@keyframes neon{0%,100%{opacity:1}92%{opacity:1}94%{opacity:.6}96%{opacity:1}}
+.demo-pub .d-hero .filetto{color:var(--dp-testo);letter-spacing:.4em;font-size:.75rem;text-transform:uppercase;font-weight:700;display:block;margin-bottom:1.2rem;opacity:.7}
+.demo-pub .d-titolo h2{color:var(--dp-testo)}
+.demo-pub .d-titolo h2::after{content:'';display:block;width:60px;height:4px;background:var(--dp-ambra);margin:.8rem auto 0}
+.demo-pub .d-lista{background:var(--dp-carta);border:2px solid #3a2f24;border-radius:10px;padding:2rem clamp(1.2rem,4vw,2.5rem)}
+.demo-pub .d-riga{border-bottom:1px dashed #4d3f2f}
+.demo-pub .d-riga:last-child{border-bottom:none}
+.demo-pub .d-nome{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:1.05rem}
+.demo-pub .d-punti{border-bottom:2px dotted #4d3f2f}
+.demo-pub .d-prezzo{color:var(--dp-ambra);font-family:'Anton',sans-serif;font-size:1.2rem}
+.demo-pub .d-card{background:var(--dp-carta);border:2px solid #3a2f24;border-radius:10px;transform:rotate(-.5deg)}
+.demo-pub .d-card:nth-child(2){transform:rotate(.5deg)}
+.demo-pub .d-card h3{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:.05em}
+.demo-pub .d-card .data-evento{color:var(--dp-ambra);font-weight:800;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase}
+.demo-pub .btn-demo{background:var(--dp-ambra);color:#14100C;border:none;font-family:'Anton',sans-serif;font-weight:400;padding:1rem 2.2rem;border-radius:6px;font-size:1.05rem;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;display:inline-block;box-shadow:0 0 25px rgba(255,176,58,.35)}
+.demo-pub .d-piede{background:#0C0906;color:#8a7a63}
+</style>
+</head>
+<body>
+
+<!-- ===== BARRA DEMO (visibile solo in modalità demo) ===== -->
+<div class="barra-demo" id="barraDemo">
+  <span class="info">✦ Stai guardando una <strong>demo</strong> — un sito così per la tua attività: <strong id="barraPrezzo">da € 249</strong> + € 25/mese tutto incluso</span>
+  <span class="azioni">
+    <a class="barra-btn pieno" href="https://wa.me/390000000000?text=Ciao!%20Ho%20visto%20la%20demo%20e%20voglio%20un%20sito%20cos%C3%AC%20per%20il%20mio%20locale." target="_blank" rel="noopener">Lo voglio</a>
+    <button class="barra-btn" onclick="tornaBottega()">← Torna alla Bottega</button>
+  </span>
+</div>
+
+<!-- ============================================================
+     SITO BOTTEGA (default)
+============================================================ -->
+<div id="bottega">
+<nav>
+  <a class="logo" href="#">Bottega<span>//</span>del Web</a>
+  <ul class="nav-links">
+    <li><a href="#trasforma">Prova la demo</a></li>
+    <li><a href="#come">Come funziona</a></li>
+    <li><a href="#menu">Prezzi</a></li>
+    <li><a class="nav-cta" href="#contatti">Parliamone</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <span class="eyebrow">Siti web per l'ospitalità toscana</span>
+  <h1>Che attività hai? <em>Guarda il tuo sito</em> prima ancora di ordinarlo.</h1>
+  <p>Scegli qui sotto il tuo tipo di locale: questa pagina si trasformerà nel sito che potresti avere. Prezzo chiaro, consegna in due settimane, manutenzione inclusa.</p>
+  <a class="btn btn-pieno" href="#trasforma">Scegli la tua attività ↓</a>
+</header>
+
+<section class="sezione" id="trasforma">
+  <div class="sezione-testa">
+    <h2>Tocca e trasforma</h2>
+    <p>Ogni locale merita un sito con il suo carattere. Scegli il tuo e guarda la magia.</p>
+  </div>
+  <div class="selettore">
+    <button class="scelta" onclick="apriDemo('trattoria')">
+      <span class="emoji">🍝</span>
+      <h3>Ho una trattoria</h3>
+      <p>Menù del giorno, prenotazioni via WhatsApp, la tua storia raccontata bene.</p>
+      <span class="vai">Trasforma il sito →</span>
+    </button>
+    <button class="scelta" onclick="apriDemo('bnb')">
+      <span class="emoji">🌿</span>
+      <h3>Ho un B&amp;B</h3>
+      <p>Camere presentate come si deve, richieste dirette senza commissioni ai portali.</p>
+      <span class="vai">Trasforma il sito →</span>
+    </button>
+    <button class="scelta" onclick="apriDemo('pub')">
+      <span class="emoji">🍺</span>
+      <h3>Ho un pub</h3>
+      <p>Birre alla spina, calendario eventi, atmosfera che si sente dallo schermo.</p>
+      <span class="vai">Trasforma il sito →</span>
+    </button>
+  </div>
+</section>
+
+<section class="sezione scuro" id="come">
+  <div class="sezione-testa">
+    <h2>Come lavoriamo</h2>
+    <p>Tu pensi al tuo locale. Al resto pensiamo noi.</p>
+  </div>
+  <div class="passi">
+    <div class="passo">
+      <div class="passo-num">1</div>
+      <h3>Ci prendiamo un caffè</h3>
+      <p>Di persona o al telefono. Ci racconti il tuo locale, noi ti diciamo subito prezzo e tempi. Senza impegno.</p>
+    </div>
+    <div class="passo">
+      <div class="passo-num">2</div>
+      <h3>Costruiamo il sito</h3>
+      <p>In due settimane ti mostriamo la prima versione. Correzioni incluse finché non sei contento.</p>
+    </div>
+    <div class="passo">
+      <div class="passo-num">3</div>
+      <h3>Restiamo in bottega</h3>
+      <p>Hosting, aggiornamenti al menù, piccole modifiche: con la manutenzione mensile non devi toccare nulla.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sezione" id="menu">
+  <div class="sezione-testa">
+    <h2>Prezzi chiari, come al banco</h2>
+    <p>Un prezzo una tantum per il sito, una piccola quota mensile per non pensarci più.</p>
+  </div>
+  <div class="menu-casa">
+    <div class="voce">
+      <span class="voce-nome">Vetrina</span><span class="voce-punti"></span><span class="voce-prezzo">€ 249</span>
+      <p class="voce-desc">Sito a pagina unica: chi sei, dove sei, orari, contatti WhatsApp. Perfetto per partire.</p>
+    </div>
+    <div class="voce consigliato">
+      <span class="voce-nome">Locale completo</span><span class="voce-punti"></span><span class="voce-prezzo">€ 390</span>
+      <p class="voce-desc">Fino a 5 pagine con menù digitale aggiornabile, galleria foto, mappa e prenotazioni via WhatsApp.</p>
+    </div>
+    <div class="voce">
+      <span class="voce-nome">Su misura</span><span class="voce-punti"></span><span class="voce-prezzo">da € 490</span>
+      <p class="voce-desc">Multilingua, calendario eventi, richieste camere: costruito attorno al tuo locale.</p>
+    </div>
+    <div class="voce">
+      <span class="voce-nome">Manutenzione &amp; hosting</span><span class="voce-punti"></span><span class="voce-prezzo">€ 25/mese</span>
+      <p class="voce-desc">Dominio, hosting, aggiornamenti al menù e piccole modifiche. Il sito resta sempre fresco, tu non fai nulla.</p>
+    </div>
+    <p class="menu-nota">Coperto non incluso — perché non c'è. Preventivo scritto sempre prima di iniziare.</p>
+  </div>
+</section>
+
+<section class="sezione scuro" id="chi">
+  <div class="chi">
+    <h2>Una bottega, non un'agenzia</h2>
+    <p>Bottega del Web nasce in Toscana, tra la Valdinievole e Pistoia. Conosciamo i locali per cui lavoriamo perché ci mangiamo, ci dormiamo e ci beviamo.</p>
+    <p>Niente preventivi da capogiro, niente paroloni: un artigiano del web che risponde al telefono e passa a trovarti.</p>
+  </div>
+</section>
+
+<section class="sezione contatti" id="contatti">
+  <div class="sezione-testa">
+    <h2>Parliamone davanti a un caffè</h2>
+    <p>Scrivici su WhatsApp o mandaci due righe: ti rispondiamo in giornata con un'idea di prezzo.</p>
+  </div>
+  <a class="btn btn-pieno" href="https://wa.me/390000000000?text=Ciao!%20Vorrei%20un%20sito%20per%20il%20mio%20locale." target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+  <p class="contatti-nota">Oppure: ciao@bottegadelweb.it</p>
+</section>
+
+<footer>
+  <a class="logo" href="#">Bottega<span style="color:var(--oro)">//</span>del Web</a>
+  <p>Siti web per trattorie, B&amp;B e pub — fatti in Toscana.<br>© 2026 Bottega del Web · P.IVA da inserire</p>
+</footer>
+</div><!-- /bottega -->
+
+<!-- ============================================================
+     DEMO TRATTORIA
+============================================================ -->
+<div class="demo demo-trattoria" id="demo-trattoria">
+  <header class="d-hero">
+    <span class="filetto">Cucina digitale toscana</span>
+    <h1>Trattoria La Bottega</h1>
+    <p class="sotto"><em>Ecco come apparirebbe la tua trattoria online. E il menù qui sotto? Sono i nostri prezzi veri, serviti come piatti della casa.</em></p>
+    <a class="btn-demo" href="https://wa.me/390000000000?text=Ciao!%20Ho%20visto%20la%20demo%20trattoria%20e%20vorrei%20ordinare%20un%20sito." target="_blank" rel="noopener">Ordina il tuo sito su WhatsApp</a>
+  </header>
+  <section class="d-sezione">
+    <div class="d-titolo"><h2>Il menù della casa</h2><p style="opacity:.7;font-family:var(--body)">Prezzi veri, coperto non incluso — perché non c'è</p></div>
+    <div class="d-lista">
+      <div class="d-riga"><span class="d-nome">Antipasto · Sito Vetrina</span><span class="d-punti"></span><span class="d-prezzo">€ 249</span>
+        <p class="d-desc">Una pagina: chi sei, dove sei, orari e WhatsApp. Per iniziare col piede giusto.</p></div>
+      <div class="d-riga"><span class="d-nome">Primo · Locale Completo <span class="nota-mano">il preferito dello chef!</span></span><span class="d-punti"></span><span class="d-prezzo">€ 390</span>
+        <p class="d-desc">Il piatto forte: fino a 5 pagine, menù digitale che aggiorni dal telefono, galleria, prenotazioni via WhatsApp.</p></div>
+      <div class="d-riga"><span class="d-nome">Secondo · Su Misura</span><span class="d-punti"></span><span class="d-prezzo">da € 490</span>
+        <p class="d-desc">Multilingua, eventi, tutto quello che serve al tuo locale. Cucinato apposta per te.</p></div>
+      <div class="d-riga"><span class="d-nome">Caffè della casa · Manutenzione</span><span class="d-punti"></span><span class="d-prezzo">€ 25/mese</span>
+        <p class="d-desc">Dominio, hosting e aggiornamenti al menù. Il sito resta fresco, tu non tocchi nulla.</p></div>
+    </div>
+  </section>
+  <section class="d-sezione" style="padding-top:0">
+    <div class="d-griglia">
+      <div class="d-card"><h3>Perché un sito così</h3><p>Il tuo menù del giorno online in 30 secondi dal telefono, prenotazioni che arrivano su WhatsApp, e Google che ti trova prima dei portali.</p></div>
+      <div class="d-card"><h3>Tempi di cottura</h3><p>Prima versione in due settimane. Correzioni incluse finché il piatto non è perfetto.</p></div>
+      <div class="d-card"><h3>Prenota un assaggio</h3><p>Un messaggio su WhatsApp e ti rispondiamo in giornata con un preventivo scritto. Senza impegno.</p></div>
+    </div>
+  </section>
+  <div class="d-piede">Trattoria La Bottega — demo di Bottega del Web · il tuo sito può essere così</div>
+</div>
+
+<!-- ============================================================
+     DEMO B&B
+============================================================ -->
+<div class="demo demo-bnb" id="demo-bnb">
+  <header class="d-hero">
+    <span class="filetto">Ospitalità digitale in collina</span>
+    <h1>La Bottega B&amp;B</h1>
+    <p class="sotto">Così apparirebbe il tuo B&amp;B online. Le camere qui sotto sono i nostri pacchetti — con i prezzi veri e senza commissioni ai portali.</p>
+    <a class="btn-demo" href="https://wa.me/390000000000?text=Ciao!%20Ho%20visto%20la%20demo%20B%26B%20e%20vorrei%20prenotare%20un%20sito." target="_blank" rel="noopener">Prenota il tuo sito</a>
+  </header>
+  <section class="d-sezione">
+    <div class="d-titolo"><h2>Le nostre camere</h2><p style="opacity:.7">Si paga una volta sola, non a notte</p></div>
+    <div class="d-griglia">
+      <div class="d-card"><h3>Camera Vetrina</h3><p>Una pagina essenziale e curata: chi sei, le camere, come raggiungerti, contatto diretto WhatsApp.</p><div class="prezzo-camera">€ 249 · una tantum</div></div>
+      <div class="d-card"><h3>Camera Completa</h3><p>Fino a 5 pagine: ogni camera presentata come si deve, galleria foto, modulo richieste dirette, mappa.</p><div class="prezzo-camera">€ 390 · una tantum</div></div>
+      <div class="d-card"><h3>Suite Su Misura</h3><p>Multilingua per gli ospiti stranieri, calendario disponibilità, tutto costruito attorno al tuo podere.</p><div class="prezzo-camera">da € 490 · una tantum</div></div>
+    </div>
+  </section>
+  <section class="d-sezione" style="padding-top:0">
+    <div class="d-griglia">
+      <div class="d-card"><h3>Servizio in camera</h3><p>Manutenzione &amp; hosting a € 25/mese: dominio, aggiornamenti, piccole modifiche. Il sito resta sempre in ordine, come le camere.</p></div>
+      <div class="d-card"><h3>Perché conviene</h3><p>Ogni prenotazione diretta ti fa risparmiare il 15–20% di commissioni dei portali. Il sito si ripaga in poche notti.</p></div>
+    </div>
+  </section>
+  <div class="d-piede">La Bottega B&amp;B — demo di Bottega del Web · il tuo sito può essere così</div>
+</div>
+
+<!-- ============================================================
+     DEMO PUB
+============================================================ -->
+<div class="demo demo-pub" id="demo-pub">
+  <header class="d-hero">
+    <span class="filetto">Craft websites &amp; buone idee</span>
+    <h1>La Bottega Pub</h1>
+    <p class="sotto">Il tuo pub potrebbe avere un sito così. E alla spina, questa settimana come sempre, ci sono i nostri prezzi veri.</p>
+    <a class="btn-demo" href="https://wa.me/390000000000?text=Ciao!%20Ho%20visto%20la%20demo%20pub%20e%20voglio%20una%20pinta%20di%20sito." target="_blank" rel="noopener">Ordina una pinta di sito</a>
+  </header>
+  <section class="d-sezione">
+    <div class="d-titolo"><h2>Alla spina</h2><p style="opacity:.6">Fusti sempre freschi, prezzi sempre quelli</p></div>
+    <div class="d-lista">
+      <div class="d-riga"><span class="d-nome">Vetrina Lager · leggera e diretta</span><span class="d-punti"></span><span class="d-prezzo">€ 249</span>
+        <p class="d-desc">Una pagina: chi sei, orari, dove sei, WhatsApp. Perfetta per partire.</p></div>
+      <div class="d-riga"><span class="d-nome">Completa IPA · corposa, la più ordinata</span><span class="d-punti"></span><span class="d-prezzo">€ 390</span>
+        <p class="d-desc">Fino a 5 pagine: carta delle birre aggiornabile dal telefono, calendario eventi, galleria.</p></div>
+      <div class="d-riga"><span class="d-nome">Imperial Su Misura · per palati esigenti</span><span class="d-punti"></span><span class="d-prezzo">da € 490</span>
+        <p class="d-desc">Multilingua, prevendite eventi, integrazione social: brassata attorno al tuo locale.</p></div>
+      <div class="d-riga"><span class="d-nome">Session Manutenzione · da bere ogni mese</span><span class="d-punti"></span><span class="d-prezzo">€ 25/mese</span>
+        <p class="d-desc">Hosting, dominio e aggiornamenti alla carta. Le spine girano, il sito pure.</p></div>
+    </div>
+  </section>
+  <section class="d-sezione" style="padding-top:0">
+    <div class="d-titolo"><h2>Prossimi eventi (del tuo sito)</h2></div>
+    <div class="d-griglia">
+      <div class="d-card"><span class="data-evento">Settimana 1</span><h3>Si parte</h3><p>Ci scrivi su WhatsApp, ci prendiamo una birra (o un caffè) e definiamo tutto: preventivo scritto in giornata.</p></div>
+      <div class="d-card"><span class="data-evento">Settimana 2</span><h3>Prima spillatura</h3><p>Ti mostriamo la prima versione del sito. Correzioni incluse finché la schiuma non è perfetta.</p></div>
+      <div class="d-card"><span class="data-evento">Sempre</span><h3>Il fusto non finisce</h3><p>Con la manutenzione mensile aggiorniamo noi carta, eventi e orari. Tu pensi a spillare.</p></div>
+    </div>
+  </section>
+  <div class="d-piede">La Bottega Pub — demo di Bottega del Web · il tuo sito può essere così</div>
+</div>
+
+<script>
+const prezziBarra = {
+  trattoria: '€ 390 chiavi in mano',
+  bnb: 'da € 490 chiavi in mano',
+  pub: '€ 390 chiavi in mano'
+};
+
+function apriDemo(tipo) {
+  document.querySelectorAll('.demo').forEach(d => d.classList.remove('attiva'));
+  const demo = document.getElementById('demo-' + tipo);
+  if (!demo) return;
+  demo.classList.add('attiva');
+  document.body.classList.add('in-demo');
+  document.getElementById('barraPrezzo').textContent = prezziBarra[tipo] || 'da € 249';
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+function tornaBottega() {
+  document.body.classList.remove('in-demo');
+  document.querySelectorAll('.demo').forEach(d => d.classList.remove('attiva'));
+  const sel = document.getElementById('trasforma');
+  if (sel) sel.scrollIntoView({ behavior: 'instant', block: 'start' });
+}
+</script>
+</body>
+</html>
